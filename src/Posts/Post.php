@@ -2,6 +2,7 @@
 
 namespace Phroggyy\Vivid\Posts;
 
+use Illuminate\Support\Str;
 use Parsedown;
 
 class Post
@@ -38,5 +39,10 @@ class Post
     public function render()
     {
         return (new Parsedown)->parse($this->content);
+    }
+
+    public function excerpt($words = 120)
+    {
+        return Str::words(strip_tags((new Parsedown)->text($this->content)), $words);
     }
 }

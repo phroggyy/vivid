@@ -14,7 +14,9 @@
 /** @var \Illuminate\Routing\Router $router */
 
 $router->group(['namespace' => 'Phroggyy\\Vivid\\Http\\Controllers\\Admin', 'as' => 'vivid::admin.'], function (\Illuminate\Routing\Router $router) {
-    $router->get('/', 'OverviewController@index');
+    $router->get('/', 'OverviewController@index')->name('overview');
+    $router->get('/posts/new', 'PostController@create')->name('posts.create');
     $router->get('/posts/{post}', 'PostController@edit')->name('posts.edit');
-    $router->post('/posts/{post}', 'PostController@update')->name('posts.update');
+    $router->put('/posts/{post}', 'PostController@update')->name('posts.update');
+    $router->post('/posts', 'PostController@store')->name('posts.store');
 });

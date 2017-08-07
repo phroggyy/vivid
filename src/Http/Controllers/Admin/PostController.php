@@ -9,15 +9,28 @@ use Phroggyy\Vivid\Posts\PostManager;
 
 class PostController extends Controller
 {
+    public function create()
+    {
+        return view('vivid::admin.posts.edit', [
+            'action' => route('vivid::admin.posts.store')
+        ]);
+    }
+
     public function edit($post, PostManager $posts)
     {
         $post = $posts->retrieve($post);
-        return view('vivid::admin.posts.edit', compact('post'));
+        return view('vivid::admin.posts.edit', [
+            'post' => $post,
+            'action' => route('vivid::admin.posts.update', $post->filename),
+            'method' => 'PUT'
+        ]);
     }
 
-    public function store($post, Request $request, PostManager $posts)
+    public function store(Request $request, PostManager $posts, Redirector $redirector)
     {
         $posts->newPost($request->title, $request->input('content'));
+
+        return $redirector->route('vivid::admin.overview');
     }
 
     public function update($post, Request $request, PostManager $posts, Redirector $redirector)

@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'blog_name' => 'Blog',
+
     'admin' => [
         /*
         |---------------------------------------------------------------------
@@ -15,6 +17,7 @@ return [
         'template' => 'layouts.app',
         'section' => 'content',
         'root_classes' => 'container',
+        'middleware' => 'auth'
     ],
     'storage' => [
         /*
@@ -40,5 +43,13 @@ return [
         |
         */
         'prefix' => 'blog'
+    ],
+
+    'base_middleware' => 'web',
+
+    'public' => [
+        'template' => 'layouts.app',
+        'section' => 'content',
+        'root_classes' => 'container',
     ]
 ];

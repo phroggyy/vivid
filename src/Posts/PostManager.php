@@ -36,13 +36,16 @@ class PostManager
 
     public function all()
     {
-        return $this->storage->all();
+        return $this->storage->all()
+            ->map(function ($file) {
+                return $this->retrieve($file);
+            });
     }
 
     protected function getSlugForTitle($title)
     {
         $slug = Str::lower(Str::slug($title));
-        $existingPosts = $this->listPosts()->filter(function ($filename) use ($slug) {
+        $existingPosts = $this->all()->filter(function ($filename) use ($slug) {
             return Str::startsWith($filename, $slug);
         })->map(function ($filename) use ($slug) {
             return Str::replaceFirst($slug.'-', '', $filename);

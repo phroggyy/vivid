@@ -4,14 +4,17 @@
     <div class="columns dir-column dir-row-sm">
         @include('vivid::admin.partials.sidebar')
         <div class="column-12 column-md-9 column-sm-8">
-            <form action="{{ route('vivid::admin.posts.update', $post->filename) }}" method="post">
+            <form action="{{ $action }}" method="post">
+                @if (isset($method))
+                    {{ method_field('PUT') }}
+                @endif
                 <div class="columns">
                     <div class="column-12 m-bottom-10">
                         <label>Title</label>
-                        <input name="title" type="text" value="{{ $post->title }}">
+                        <input name="title" type="text" value="{{ isset($post) ? $post->title : '' }}">
                     </div>
                     <div class="column-12">
-                        <textarea name="content" class="md-editor">{!! $post->content !!}</textarea>
+                        <textarea name="content" class="md-editor">{!! isset ($post) ? $post->content : '' !!}</textarea>
                     </div>
                 </div>
                 <div class="columns">

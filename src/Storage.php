@@ -4,6 +4,7 @@ namespace Phroggyy\Vivid;
 
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Filesystem\FilesystemManager;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class Storage
@@ -74,6 +75,11 @@ class Storage
         return $this;
     }
 
+    /**
+     * Retrieve all files.
+     *
+     * @return Collection
+     */
     public function all()
     {
         return collect($this->filesystem->allFiles($this->storagePrefix))

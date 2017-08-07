@@ -20,7 +20,13 @@ class Vivid extends Facade
     public static function adminRoutes($prefix = 'admin/blog')
     {
         static::$app->make('router')
-                    ->group(['prefix' => $prefix], __DIR__.'/routes/admin.php');
+                    ->group([
+                        'prefix' => $prefix,
+                        'middleware' => array_merge(
+                            (array) static::$app->make('config')->get('vivid.base_middleware'),
+                            (array) static::$app->make('config')->get('vivid.admin.middleware')
+                        ),
+                    ], __DIR__.'/routes/admin.php');
     }
 
     /**
@@ -31,6 +37,9 @@ class Vivid extends Facade
     public static function routes($prefix = 'blog')
     {
         static::$app->make('router')
-                    ->group(['prefix' => $prefix], __DIR__.'/routes/public.php');
+                    ->group([
+                        'prefix' => $prefix,
+                        'middleware' => (array) static::$app->make('config')->get('vivid.base_middleware'),
+                    ], __DIR__.'/routes/public.php');
     }
 }
