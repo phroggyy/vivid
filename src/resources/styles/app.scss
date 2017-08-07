@@ -1,0 +1,11 @@
+@import "framework/pristine";
+@include normalize();
+@include pristine-forms;
+@include pristine-buttons;
+@include pristine-margins;
+@include pristine-typography;
+
+.vivid-sidebar {
+    border-right: 1px solid $grey-fade;
+}
+

@@ -1,0 +1,22 @@
+@mixin pristine-margins($multipliers: (1,5), $range: 5) {
+    @for $i from 1 through $range {
+        @each $multiplier in $multipliers {
+            $value: $i * $multiplier;
+            .m-#{$value} {
+                margin: #{$value}px;
+            }
+            .p-#{$value} {
+                padding: #{$value}px;
+            }
+
+            @each $direction in 'top', 'left', 'right', 'bottom' {
+                .m-#{$direction}-#{$value} {
+                    margin-#{$direction}: #{$value}px;
+                }
+                .p-#{$direction}-#{$i} {
+                    padding-#{$direction}: #{$value}px;
+                }
+            }
+        }
+    }
+}

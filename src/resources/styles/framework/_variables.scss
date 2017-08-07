@@ -1,0 +1,24 @@
+// Colors
+$palette: (
+        primary: #1B98E0,
+        secondary: #B8D8D8,
+        warning: #FFE74C,
+        alert: #FF5964,
+        success: #6BF178
+);
+$primary-text: #ffffff;
+$primary-deep: darken(map-get($palette, 'primary'), 20%);
+
+$grey: #777;
+$grey-fade: fade_out(lighten($grey, 15%), 0.1);
+
+// Margin and padding
+
+$base-padding: 6px;
+
+// Radii
+$base-border-radius: 3px;
+
+// Typography
+$font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-size: 16px;

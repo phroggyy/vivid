@@ -1,0 +1,16 @@
+@import '~normalize-scss/sass/normalize';
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+@import 'variables';
+@import 'grid';
+@import 'typography';
+@import 'utility';
+@import 'forms';
+@import 'buttons';

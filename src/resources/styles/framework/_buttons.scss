@@ -1,0 +1,17 @@
+@mixin button {
+    padding: $base-padding $base-padding*2;
+    background-color: map-get($palette, 'primary');
+    color: $primary-text;
+    border: none;
+    border-radius: $base-border-radius;
+}
+
+@mixin pristine-buttons {
+    .button {
+        @include button;
+        &:hover {
+            cursor: pointer;
+            background-color: $primary-deep;
+        }
+    }
+}

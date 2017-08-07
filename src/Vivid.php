@@ -1,0 +1,36 @@
+<?php
+
+namespace Phroggyy\Vivid;
+
+use Illuminate\Support\Facades\Facade;
+use Phroggyy\Vivid\Posts\PostManager;
+
+class Vivid extends Facade
+{
+    protected static function getFacadeAccessor()
+    {
+        return PostManager::class;
+    }
+
+    /**
+     * Register the admin routes.
+     *
+     * @param string $prefix
+     */
+    public static function adminRoutes($prefix = 'admin/blog')
+    {
+        static::$app->make('router')
+                    ->group(['prefix' => $prefix], __DIR__.'/routes/admin.php');
+    }
+
+    /**
+     * Register the public routes.
+     *
+     * @param string $prefix
+     */
+    public static function routes($prefix = 'blog')
+    {
+        static::$app->make('router')
+                    ->group(['prefix' => $prefix], __DIR__.'/routes/public.php');
+    }
+}

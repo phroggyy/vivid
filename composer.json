@@ -1,0 +1,33 @@
+{
+    "name": "phroggyy/vivid",
+    "description": "A drop-in blog for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leo Sjöberg",
+            "email": "leo.sjoberg@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^5.4",
+        "illuminate/routing": "^5.4",
+        "illuminate/http": "^5.4",
+        "erusev/parsedown": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phroggyy\\Vivid\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Phroggyy\\Vivid\\VividServiceProvider"
+            ],
+            "aliases": {
+                "Vivid": "Phroggyy\\Vivid\\Vivid"
+            }
+        }
+    }
+}
