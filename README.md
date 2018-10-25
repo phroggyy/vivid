@@ -93,7 +93,6 @@ By default the public route uris are prefixed with `/blog` and the admin routes 
 
 ```
 
-```
 use Vivid;
 
 ...
