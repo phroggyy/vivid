@@ -5,6 +5,7 @@
         @include('vivid::admin.partials.sidebar')
         <div class="column-12 column-md-9 column-sm-8">
             <form action="{{ $action }}" method="post">
+                {{ csrf_field() }}
                 @if (isset($method))
                     {{ method_field('PUT') }}
                 @endif
